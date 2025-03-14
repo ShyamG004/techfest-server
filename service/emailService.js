@@ -13,13 +13,13 @@ const sendEventBookConfirmationEmail = async (userData, selectedEvents, transact
     }
   });
 
- 
-  const qrDir = path.join(__dirname, "temp_qr");
+  // Use a writable directory for temporary files in Vercel
+  const qrDir = "/tmp/temp_qr";
   if (!fs.existsSync(qrDir)) {
     fs.mkdirSync(qrDir, { recursive: true });
   }
 
-  const qrCodePath = path.join(qrDir, `${userData.email}_qrcode.png`);
+  const qrCodePath = `${qrDir}/${userData.email}_qrcode.png`;
   await QRCode.toFile(qrCodePath, userData.email);
 
   const eventList = selectedEvents?.map((event) => `<li><b>${event.name}</b> - ${event.date} at ${event.venue}</li>`).join("");
@@ -35,7 +35,7 @@ const sendEventBookConfirmationEmail = async (userData, selectedEvents, transact
       <h3>📌 Your QR Code:</h3>
       <p>The QR Code is attached to this email. Please show it at the event venue for verification. <strong>Entry without a college ID will not be allowed.</strong></p>
        <h3>📌 Whatsapp Invitation Link</h3>
-      <p><strong>Link to join Whatsapp group
+      <p><strong>Link to join Whatsapp group</strong></p>
       <p> Day - 1 :  https://chat.whatsapp.com/Cw57LfhIhwMD5G50WEBUlt </p>
       <p> Day - 2 :  https://chat.whatsapp.com/F2kVUITzoftIc3cK2YaSV0 </p>
       <p>Best Regards,<br/>NEC TechFest Team</p>`,
