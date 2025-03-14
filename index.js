@@ -27,7 +27,7 @@ app.use(helmet());
 app.use(limiter); 
 
 
-app.get("/techfest/hello",async(req,res)=>{
+app.get("/",async(req,res)=>{
      res.json("WELCOME TO NEC TECHFEST");
 })
 
