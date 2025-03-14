@@ -24,7 +24,7 @@ app.use(helmet());
 //     message: "Too many requests from the same IP, please try again after 3 minutes.",
 // });
 
-app.use(limiter); 
+// app.use(limiter); 
 
 
 app.get("/",async(req,res)=>{
