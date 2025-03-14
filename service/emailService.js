@@ -8,8 +8,8 @@ const sendEventBookConfirmationEmail = async (userData, selectedEvents, transact
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "eventliinknec@gmail.com",
-      pass: "yhonwqyyhxtxaazi"
+      user: EMAIL_USER,
+      pass: EMAIL_PASS
     }
   });
 
